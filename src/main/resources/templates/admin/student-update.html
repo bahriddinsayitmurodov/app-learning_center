@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Update</title>
+    <link rel="stylesheet" href="/css/registration_style.css">
+</head>
+<body>
+
+
+<div class="container">
+    <div class="title">Editing car details</div>
+    <div class="content">
+        <form th:method="post" th:action="@{/car/update/{id}(id=${updatingCar.getId()})}">
+            <div class="user-details">
+
+                   <div class="input-box">
+                       <span class="details">Number</span>
+                       <input type="text" th:value="${updatingCar.number}" name="number" id="number" placeholder="Enter car number" required>
+                   </div>
+
+                   <div class="input-box">
+                       <span class="details">Brand</span>
+                       <input type="text" th:value="${updatingCar.brand}" name="brand" id="brand" placeholder="Enter car brand" required>
+                   </div>
+
+                   <div class="input-box">
+                       <span class="details">Brand</span>
+                       <input type="date" th:value="${updatingCar.manufacturedDate}" name="manufacDate" id="manufacDate" placeholder="Enter car date" required>
+                   </div>
+
+                <div class="input-box">
+                       <span class="details">Image Url</span>
+                       <input type="text" th:value="${updatingCar.photo}" name="photo" id="photo" placeholder="Enter car photo url" required>
+                   </div>
+
+<!--                <div class="input-box">-->
+<!--                    <span class="details">Username</span>-->
+<!--                    <input type="text" name="username" id="username" placeholder="Enter your username" required>-->
+<!--                </div>-->
+
+<!--                <div class="input-box">-->
+<!--                    <span class="details">Email</span>-->
+<!--                    <input type="email" name="email" id="email" placeholder="Enter your email" required>-->
+<!--                </div>-->
+
+<!--                <div class="input-box">-->
+<!--                    <span class="details">Phone Number</span>-->
+<!--                    <input type="text" name="phone" id="phone" placeholder="Enter your number" required>-->
+<!--                </div>-->
+
+<!--                <div class="input-box">-->
+<!--                    <span class="details">Password</span>-->
+<!--                    <input type="password" name="password" id="password" placeholder="Enter your password" >-->
+<!--                </div>-->
+
+<!--                <div class="input-box">-->
+<!--                    <span class="details">Confirm Password</span>-->
+<!--                    <input type="password" placeholder="Confirm your password" >-->
+<!--                </div>-->
+            </div>
+
+            <div class="button">
+                <input type="submit" value="Edit">
+            </div>
+
+        </form>
+    </div>
+</div>
+
+       <!-- <label> Number
+            <input th:value="${updatingCar.number}">
+        </label>
+
+        <label> Brand
+            <input th:value="${updatingCar.brand.toString()}">
+        </label>
+
+        <label> Brand
+            <input th:value="${updatingCar.manufacturedDate}">
+        </label>-->
+
+</body>
+</html>

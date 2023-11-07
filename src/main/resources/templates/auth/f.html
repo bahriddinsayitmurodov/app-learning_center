@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="/css/forgot.css">
+</head>
+<body>
+    <div class="container">
+        <input type="checkbox" id="check">
+        <div class="login form">
+            <header>Forgot Password
+                <h4> Enter your email, we will send a code to recover</h4>
+            </header>
+
+            <form action="/auth/forgot-password" method="post">
+                <input type="text" name="email" placeholder="Enter your email">
+                <input type="button" class="button" value="Submit">
+            </form>
+
+            <div class="signup">
+            <span class="signup">Don't have an account?
+                <a href="/auth/register">Register</a>
+            </span>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>
