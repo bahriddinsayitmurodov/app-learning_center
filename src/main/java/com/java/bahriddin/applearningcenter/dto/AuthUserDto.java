@@ -1,4 +1,4 @@
-package uz.pdp.springsecuritystarter.dto;
+package com.java.bahriddin.applearningcenter.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,9 +15,11 @@ public class AuthUserDto {
 
     private String username;
 
-    private String password;
-
     private String email;
 
     private String phone;
+
+    private String password;
+
+
 }

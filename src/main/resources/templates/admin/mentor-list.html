@@ -7,17 +7,16 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    <a th:href="@{/admin/create/student}"   class="btn btn-success">Add New Student</a>
+    <a th:href="@{/admin/create/mentor}"   class="btn btn-success">Add New Mentor</a>
 <table class="table table-striped">
+
     <thead>
     <tr>
         <th scope="col">ID</th>
-        <th scope="col">FirstName</th>
-        <th scope="col">LastName</th>
+        <th scope="col">Name</th>
+        <th scope="col">Username</th>
         <th scope="col">Email</th>
-        <th scope="col">Date of birth</th>
         <th scope="col">Phone</th>
-        <th scope="col">Stacks</th>
         <th scope="col">Actions</th>
 
     </tr>
@@ -25,25 +24,20 @@
 
     <tbody>
 
-    <tr th:each="student: ${students}">
+    <tr th:each="mentor: ${mentors}">
 
-        <td th:text="${studentStat.count}" />
+        <td th:text="${mentorStat.count}" />
        <!-- <td>
-            <img th:src="${student.photo}" alt="img" height="150px" width="300px">
+            <img th:src="${mentor.photo}" alt="img" height="150px" width="300px">
         </td>-->
-        <td th:text="${student.firstName}" />
-        <td th:text="${student.lastName}" />
-        <td th:text="${student.email}"/>
-        <td th:text="${student.birthDate}"/>
-        <!--<td th:text="${student.education}"/>-->
-        <td th:text="${student.phone}"/>
-
-        <td th:each="st : ${student.stack}" th:text="${st}"/>
-        <td th:text="${student.birthDate}"/>
+        <td th:text="${mentor.name}" />
+        <td th:text="${mentor.username}" />
+        <td th:text="${mentor.email}"/>
+        <td th:text="${mentor.phone}"/>
 
         <td>
-            <a th:href="@{/admin/update/student/{id}(id=${student.getId()})}"   class="btn btn-warning">Edit</a>
-            <a th:href="@{/admin/delete/student/{id}(id=${student.getId()})}" class="btn btn-danger">Delete</a>
+            <a th:href="@{/admin/update/mentor/{id}(id=${mentor.getId()})}"   class="btn btn-warning">Edit</a>
+            <a th:href="@{/admin/delete/mentor/{id}(id=${mentor.getId()})}" class="btn btn-danger">Delete</a>
         </td>
 
     </tr>

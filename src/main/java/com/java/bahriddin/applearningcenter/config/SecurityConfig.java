@@ -1,5 +1,6 @@
-package uz.pdp.springsecuritystarter.config;
+package com.java.bahriddin.applearningcenter.config;
 
+import com.java.bahriddin.applearningcenter.service.AuthUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,8 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
-import uz.pdp.springsecuritystarter.service.AuthUserService;
-
 
 @Configuration
 @EnableWebSecurity
@@ -25,9 +24,8 @@ public class SecurityConfig {
 
         security.csrf(AbstractHttpConfigurer::disable);
 
-
         security.authorizeHttpRequests(
-                authorization -> authorization.requestMatchers( "/auth/login", "/css/**",
+                authorization -> authorization.requestMatchers("/auth/login", "/css/**",
                                 "/fonts/**",
                                 "/image/**",
                                 "/js/**",
@@ -43,7 +41,7 @@ public class SecurityConfig {
                 login->login.loginPage("/auth/login")
                         .usernameParameter("username")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/home", true)
+                        .defaultSuccessUrl("/", true)
                         .failureHandler(failureHandler)
         );
         // for getting user details from database
@@ -66,6 +64,7 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService(){
         UserDetails admin = User.withDefaultPasswordEncoder().roles("ADMIN").username("bahriddin").password("123").build();
         UserDetails user = User.withDefaultPasswordEncoder().roles("USER").username("AZIM").password("123").build();
-       return new InMemoryUserDetailsManager(admin, user);
+       return new InMemoryUserDetailsManager(ad
+       min, user);
     }*/
 }

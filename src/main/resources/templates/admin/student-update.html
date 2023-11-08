@@ -4,35 +4,49 @@
     <meta charset="UTF-8">
     <title>Car Update</title>
     <link rel="stylesheet" href="/css/registration_style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
 
 
 <div class="container">
-    <div class="title">Editing car details</div>
+    <div class="title">Editing Student details</div>
     <div class="content">
-        <form th:method="post" th:action="@{/car/update/{id}(id=${updatingCar.getId()})}">
+
+        <form th:method="post" th:action="@{/admin/update/student/{id}(id=${updatingStudent.getId()})}">
             <div class="user-details">
 
                    <div class="input-box">
-                       <span class="details">Number</span>
-                       <input type="text" th:value="${updatingCar.number}" name="number" id="number" placeholder="Enter car number" required>
+                       <span class="details">FirstName</span>
+                       <input type="text" th:value="${updatingStudent.firstName}" name="firstName" id="firstName" placeholder="Enter first name" required>
                    </div>
 
                    <div class="input-box">
-                       <span class="details">Brand</span>
-                       <input type="text" th:value="${updatingCar.brand}" name="brand" id="brand" placeholder="Enter car brand" required>
+                       <span class="details">Lastname</span>
+                       <input type="text" th:value="${updatingStudent.lastName}" name="lastName" id="lastName" placeholder="Enter last name" required>
                    </div>
 
                    <div class="input-box">
-                       <span class="details">Brand</span>
-                       <input type="date" th:value="${updatingCar.manufacturedDate}" name="manufacDate" id="manufacDate" placeholder="Enter car date" required>
+                       <span class="details">Phone</span>
+                       <input type="text" th:value="${updatingStudent.phone}" name="phone" id="phone" placeholder="Enter phone number" required>
                    </div>
 
-                <div class="input-box">
+                    <div class="input-box">
+                       <span class="details">Date of birth</span>
+                       <input type="date" th:value="${updatingStudent.birthDate}" name="birthDate" id="birthDate" placeholder="Enter birthDate" required>
+                   </div>
+
+                    <div class="input-box">
+                       <span class="details">EduStacks</span>
+                       <input type="text" th:each="st : ${updatingStudent.stack}" th:value="${st}" name="stacks" id="stacks" placeholder="Enter stack" required>
+                   </div>
+
+
+               <!-- <div class="input-box">
                        <span class="details">Image Url</span>
-                       <input type="text" th:value="${updatingCar.photo}" name="photo" id="photo" placeholder="Enter car photo url" required>
-                   </div>
+                       <input type="text" th:value="${updatingStudent.birthDate}" name="photo" id="photo" placeholder="Enter car photo url" required>
+                   </div>-->
 
 <!--                <div class="input-box">-->
 <!--                    <span class="details">Username</span>-->
@@ -64,21 +78,20 @@
                 <input type="submit" value="Edit">
             </div>
 
+            
         </form>
+        <a th:href="@{/admin/get/students}"><button type="submit" class="btn btn-danger">Cancel</button></a>
     </div>
 </div>
 
-       <!-- <label> Number
-            <input th:value="${updatingCar.number}">
-        </label>
 
-        <label> Brand
-            <input th:value="${updatingCar.brand.toString()}">
-        </label>
 
-        <label> Brand
-            <input th:value="${updatingCar.manufacturedDate}">
-        </label>-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMhttps://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cars.com%2Fresearch%2Fcompare%2F&psig=AOvVaw0Fi1bXcYHFNLexHN5UyIKM&ust=1698317435920000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNiXsK-5kYIDFQAAAAAdAAAAABAEwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

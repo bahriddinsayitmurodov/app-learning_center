@@ -1,12 +1,15 @@
-package uz.pdp.springsecuritystarter.repository;
+package com.java.bahriddin.applearningcenter.repository;
 
+import com.java.bahriddin.applearningcenter.entity.authuser.AuthUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import uz.pdp.springsecuritystarter.entity.authuser.AuthUser;
 
 import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<AuthUser, Integer> {
     Optional<AuthUser> getAuthUserByUsername(String username);
+//    Optional<AuthUser> getAuthUserByRoleMento(String role);
+
+
 }

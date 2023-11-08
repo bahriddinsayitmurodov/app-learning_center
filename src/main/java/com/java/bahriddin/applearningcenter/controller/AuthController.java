@@ -1,11 +1,12 @@
-package uz.pdp.springsecuritystarter.controller;
+package com.java.bahriddin.applearningcenter.controller;
 
+import com.java.bahriddin.applearningcenter.dto.AuthUserDto;
+import com.java.bahriddin.applearningcenter.service.AuthUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import uz.pdp.springsecuritystarter.dto.AuthUserDto;
-import uz.pdp.springsecuritystarter.service.AuthUserService;
+
 
 @Controller
 @RequestMapping("/auth")
@@ -15,7 +16,7 @@ public class AuthController {
 
     private final AuthUserService authUserService;
 
-    @GetMapping(value = "/login")
+    @GetMapping("/login")
     public String loginPage(@RequestParam(required = false) String error, Model model) {
         model.addAttribute("errorMessage",error);
         return "auth/login";
@@ -30,14 +31,6 @@ public class AuthController {
     public String forgotPasswordPage() {
         System.out.println("Forgot Password");
         return "auth/f";
-    }
-
-    @PostMapping("/forgot-password")
-    public String recoverPassword(@RequestParam("email") String email) {
-
-        //todo
-        authUserService.recoverPassword(email);
-        return "redirect:auth/login";
     }
 
     @PostMapping("/register")

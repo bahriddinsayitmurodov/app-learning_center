@@ -1,4 +1,4 @@
-package uz.pdp.springsecuritystarter.config;
+package com.java.bahriddin.applearningcenter.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

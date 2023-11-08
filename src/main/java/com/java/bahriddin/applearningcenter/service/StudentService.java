@@ -1,43 +1,83 @@
 package com.java.bahriddin.applearningcenter.service;
 
-import com.java.bahriddin.applearningcenter.dto.AuthUserDto;
-import com.java.bahriddin.applearningcenter.entity.authuser.AuthUser;
-import com.java.bahriddin.applearningcenter.repository.UserRepository;
+import com.java.bahriddin.applearningcenter.dto.StudentDto;
+import com.java.bahriddin.applearningcenter.entity.stack.EduStack;
+import com.java.bahriddin.applearningcenter.entity.student.Student;
+import com.java.bahriddin.applearningcenter.repository.EduStackRepository;
+import com.java.bahriddin.applearningcenter.repository.StudentRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 
 @Service
 @RequiredArgsConstructor
-public class AuthUserService implements UserDetailsService {
+public class StudentService {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder encoder;
-    private final ModelMapper mapper = new ModelMapper();
+    private final StudentRepository studentRepository;
+    private final EduStackRepository stackRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AuthUser authUser = userRepository
-                .getAuthUserByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
-
-        return new User(authUser.getUsername(),authUser.getPassword(), authUser.getAuthorities());
+    public List<Student> getAll() {
+        return  studentRepository.findAll();
     }
 
-    public void create(AuthUserDto userDto) {
-        System.out.println(userDto);
+    @Transactional
+    public void create(StudentDto studentDto) {
 
-        AuthUser authUser = mapper.map(userDto, AuthUser.class);
-        authUser.setPassword(encoder.encode(authUser.getPassword()));
+        String stack = studentDto.getStack();
+        EduStack eduStack = stackRepository.findByName(stack);
 
-        System.out.println(authUser);
-        userRepository.save(authUser);
+        Student student = Student.builder()
+                .firstName(studentDto.getFirstName())
+                .lastName(studentDto.getLastName())
+                .phone(studentDto.getPhone())
+                .stack(studentDto.getStack())
+                .email(studentDto.getEmail())
+                .birthDate(studentDto.getBirthDate())
+                .build();
+
+        studentRepository.save(student);
+
+
+
+
+        /*
+                .name(studentDto.getName())
+                .phone(studentDto.)
+                .role(Role.STUDENT)
+                .email(studentDto.getEmail())
+                .stacks(new ArrayList<>() {{
+
+                    add(eduStack);
+                }})
+                .build();
+*/
     }
 
+    public void deleteById(Integer id) {
+        studentRepository.deleteById(id);
+    }
+
+    public Student getById(Integer id) {
+        Optional<Student> student = studentRepository.findById(id);
+        return student.get();
+    }
+
+    @Transactional
+    public void update(Integer id, StudentDto studentDto) {
+
+        Student student = studentRepository.findById(id).get();
+
+        student.setPhone(Objects.requireNonNullElse(studentDto.getPhone(),student.getPhone()));
+        student.setFirstName(Objects.requireNonNullElse(studentDto.getFirstName(),student.getFirstName()));
+        student.setLastName(Objects.requireNonNullElse(studentDto.getLastName(),student.getLastName()));
+        student.setBirthDate(Objects.requireNonNullElse(studentDto.getBirthDate(),student.getBirthDate()));
+        student.setEmail(Objects.requireNonNullElse(studentDto.getEmail(),student.getEmail()));
+
+        studentRepository.save(student);
+    }
 }

@@ -1,15 +1,16 @@
-package uz.pdp.springsecuritystarter.entity.authuser;
+package com.java.bahriddin.applearningcenter.entity.authuser;
 
+import com.java.bahriddin.applearningcenter.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import uz.pdp.springsecuritystarter.entity.rent.Rent;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,7 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-
+@ToString
 public class AuthUser implements UserDetails {
 
     @Id
@@ -34,39 +35,32 @@ public class AuthUser implements UserDetails {
     @Column(nullable = false, unique = true)
     private String email;
 
-    //@Column(nullable = false, unique = true)
-    //private String phoneNumber;
+    @Column(nullable = false, unique = true)
+    private String phone;
 
+    @Column(nullable = false)
     private String password;
 
-    @Transient
-    private String prePassword;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_rents",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "rent_id")
-    )
-    private List<Rent> rents;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, columnDefinition = "timestamp default now()")
+    private LocalDateTime createdAt;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_"+role.toString()));
 
-        for (Role role : roles) {
+       /* for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getCode()));
             for (Permission permission : role.getPermissions()) {
                 String code = permission.getCode();
                 System.out.println(code);
                 authorities.add(new SimpleGrantedAuthority(permission.getCode()));
             }
-        }
+        }*/
 
         return authorities;
     }
@@ -91,5 +85,11 @@ public class AuthUser implements UserDetails {
         return true;
     }
 
+    /*
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;*/
 
 }

@@ -1,5 +1,6 @@
-package uz.pdp.springsecuritystarter.config;
+package com.java.bahriddin.applearningcenter.config;
 
+import org.slf4j.helpers.NormalizedParameters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -10,7 +11,7 @@ public class PasswordEncoderConfig {
 
     @Bean
     public PasswordEncoder encoder(){
-        //return  NoOpPasswordEncoder.getInstance();
-        return new BCryptPasswordEncoder(8);
+        return NoOpPasswordEncoder.getInstance();
+//        return new BCryptPasswordEncoder(8);
     }
 }

@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Student Add</title>
+    <link rel="stylesheet" href="/css/forgot.css">
 </head>
 <body>
-$END$
+<div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+
+        <form action="/admin/create/student" method="post">
+
+            <input type="text" name="firstName" placeholder="First name">
+            <input type="text" name="lastName" placeholder="Last name">
+            <input type="text" name="phone" placeholder="Phone">
+            <input type="date" name="birthDate" placeholder="BirthDate">
+            <input type="email" name="email" placeholder="Email">
+
+            <select name="stack" id="stack">
+                <option th:each="stack:${stackList}" th:text="${stack.name}"></option>
+            </select>
+
+            <!--<select name="role" id="role">
+                <option th:each="role:${roles}" th:text="${role.getCode()}"></option>
+            </select>-->
+
+            <button type="submit">Save</button>
+        </form>
+
+        <a href="/home" class="btn btn-success" style="position: fixed; bottom: 0; right: 0; margin: 20px">Back home</a>
+    </div>
+
+</div>
 </body>
 </html>
