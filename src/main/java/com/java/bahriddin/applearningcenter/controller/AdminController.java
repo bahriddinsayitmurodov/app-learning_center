@@ -1,6 +1,6 @@
 package com.java.bahriddin.applearningcenter.controller;
 
-import com.java.bahriddin.applearningcenter.entity.EduStack;
+import com.java.bahriddin.applearningcenter.entity.Course;
 import com.java.bahriddin.applearningcenter.enums.Role;
 import com.java.bahriddin.applearningcenter.service.EduStackService;
 import lombok.RequiredArgsConstructor;
@@ -13,17 +13,17 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
 @RequiredArgsConstructor
+@RequestMapping("/admin")
+@PreAuthorize("hasAnyRole('ADMIN')")
 public class AdminController {
 
     private final EduStackService stackService;
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/create/student")
     public String createStudentPage(Model model) {
 
-        List<EduStack> stackList = stackService.getAll();
+        List<Course> stackList = stackService.getAll();
         model.addAttribute("stackList",stackList);
 
         List<Role> roles = Arrays.stream(Role.values()).toList();
@@ -32,7 +32,7 @@ public class AdminController {
         return "/admin/student-add";
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+
     @GetMapping("/create/mentor")
     public String createMentorPage(Model model) {
 

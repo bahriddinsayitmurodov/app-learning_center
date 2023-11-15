@@ -1,7 +1,7 @@
 package com.java.bahriddin.applearningcenter.service;
 
-import com.java.bahriddin.applearningcenter.entity.EduStack;
-import com.java.bahriddin.applearningcenter.repository.EduStackRepository;
+import com.java.bahriddin.applearningcenter.entity.Course;
+import com.java.bahriddin.applearningcenter.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +11,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EduStackService {
 
-    private final EduStackRepository stackRepository;
+    private final CourseRepository stackRepository;
 
 
-    public List<EduStack> getAll() {
+    public List<Course> getAll() {
         return  stackRepository.findAll();
     }
 
-    public void create(EduStack stack) {
+    public void create(Course stack) {
         stackRepository.save(stack);
     }
 

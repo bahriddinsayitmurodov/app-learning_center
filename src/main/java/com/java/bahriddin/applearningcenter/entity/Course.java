@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 
-public class EduStack {
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
