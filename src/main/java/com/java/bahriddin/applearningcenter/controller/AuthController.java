@@ -1,7 +1,7 @@
 package com.java.bahriddin.applearningcenter.controller;
 
 import com.java.bahriddin.applearningcenter.dto.AuthUserDto;
-import com.java.bahriddin.applearningcenter.service.AuthUserService;
+import com.java.bahriddin.applearningcenter.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 
 public class AuthController {
-
-    private final AuthUserService authUserService;
 
     @GetMapping("/login")
     public String loginPage(@RequestParam(required = false) String error, Model model) {
@@ -31,12 +29,6 @@ public class AuthController {
     public String forgotPasswordPage() {
         System.out.println("Forgot Password");
         return "auth/f";
-    }
-
-    @PostMapping("/register")
-    public String create(@ModelAttribute AuthUserDto userDto) {
-        authUserService.create(userDto);
-        return "redirect:auth/login";
     }
 
 

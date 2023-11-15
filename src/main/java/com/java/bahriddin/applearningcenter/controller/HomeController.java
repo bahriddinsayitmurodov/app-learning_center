@@ -14,26 +14,5 @@ public class HomeController {
     }
 
 
-  /*  @GetMapping("/admin")
-    @PreAuthorize("hasRole('ADMIN')")
-    public String home() {
-        return "admin_can_access";
-    }
-
-    @GetMapping("/manager")
-    @PreAuthorize("hasRole('MANAGER')")
-    public String manager(){
-        return "manager_can_access";
-    }
-
-    @GetMapping("/has_any_role")
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER', 'USER')")
-    public String profile(){
-        return "ADMIN, MANAGER, USER can see this page";
-    }
-*/
-
-
-
 }
 

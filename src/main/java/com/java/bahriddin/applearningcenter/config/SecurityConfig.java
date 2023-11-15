@@ -1,6 +1,5 @@
 package com.java.bahriddin.applearningcenter.config;
 
-import com.java.bahriddin.applearningcenter.service.AuthUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final AuthUserService userService;
+    private final AuthUserDetailsService userService;
     private final CustomFailureHandler failureHandler;
 
     @Bean
