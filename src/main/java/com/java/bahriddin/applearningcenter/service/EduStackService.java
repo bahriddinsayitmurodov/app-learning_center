@@ -1,6 +1,6 @@
 package com.java.bahriddin.applearningcenter.service;
 
-import com.java.bahriddin.applearningcenter.entity.stack.EduStack;
+import com.java.bahriddin.applearningcenter.entity.EduStack;
 import com.java.bahriddin.applearningcenter.repository.EduStackRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

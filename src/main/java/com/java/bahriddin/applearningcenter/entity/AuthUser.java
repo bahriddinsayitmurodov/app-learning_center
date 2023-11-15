@@ -1,4 +1,4 @@
-package com.java.bahriddin.applearningcenter.entity.authuser;
+package com.java.bahriddin.applearningcenter.entity;
 
 import com.java.bahriddin.applearningcenter.enums.Role;
 import jakarta.persistence.*;

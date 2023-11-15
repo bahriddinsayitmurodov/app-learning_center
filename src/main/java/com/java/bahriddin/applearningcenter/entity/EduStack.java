@@ -1,4 +1,4 @@
-package com.java.bahriddin.applearningcenter.entity.stack;
+package com.java.bahriddin.applearningcenter.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

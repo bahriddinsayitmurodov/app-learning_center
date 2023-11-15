@@ -1,7 +1,7 @@
 package com.java.bahriddin.applearningcenter.service;
 
 import com.java.bahriddin.applearningcenter.dto.AuthUserDto;
-import com.java.bahriddin.applearningcenter.entity.authuser.AuthUser;
+import com.java.bahriddin.applearningcenter.entity.AuthUser;
 import com.java.bahriddin.applearningcenter.enums.Role;
 import com.java.bahriddin.applearningcenter.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.print.DocFlavor;
 import java.util.List;
 
 

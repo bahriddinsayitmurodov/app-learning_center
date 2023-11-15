@@ -1,6 +1,6 @@
 package com.java.bahriddin.applearningcenter.repository;
 
-import com.java.bahriddin.applearningcenter.entity.authuser.AuthUser;
+import com.java.bahriddin.applearningcenter.entity.AuthUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
