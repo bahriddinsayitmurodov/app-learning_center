@@ -12,14 +12,13 @@
     <thead>
     <tr>
         <th scope="col">ID</th>
-        <th scope="col">FirstName</th>
-        <th scope="col">LastName</th>
+        <th scope="col">FullName</th>
+        <th scope="col">Username</th>
         <th scope="col">Email</th>
-        <th scope="col">Date of birth</th>
         <th scope="col">Phone</th>
-        <th scope="col">Stacks</th>
-        <th scope="col">Actions</th>
-
+<!--        <th scope="col">Date of birth</th>-->
+        <th scope="col">Role</th>
+        <th scope="col">Created At</th>
     </tr>
     </thead>
 
@@ -31,15 +30,15 @@
        <!-- <td>
             <img th:src="${student.photo}" alt="img" height="150px" width="300px">
         </td>-->
-        <td th:text="${student.firstName}" />
-        <td th:text="${student.lastName}" />
+        <td th:text="${student.name}" />
+        <td th:text="${student.username}" />
         <td th:text="${student.email}"/>
-        <td th:text="${student.birthDate}"/>
-        <!--<td th:text="${student.education}"/>-->
         <td th:text="${student.phone}"/>
+        <td th:text="${student.phone}"/>
+        <td th:text="${student.role}"/>
+        <td th:text="${student.createdAt}"/>
 
-        <td th:each="st : ${student.stack}" th:text="${st}"/>
-        <td th:text="${student.birthDate}"/>
+        <!--        <td th:each="st : ${student.stack}" th:text="${st}"/>-->
 
         <td>
             <a th:href="@{/admin/update/student/{id}(id=${student.getId()})}"   class="btn btn-warning">Edit</a>

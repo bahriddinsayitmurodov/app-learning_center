@@ -1,11 +1,11 @@
 package com.java.bahriddin.applearningcenter.controller;
 
-import com.java.bahriddin.applearningcenter.dto.AuthUserDto;
-import com.java.bahriddin.applearningcenter.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller

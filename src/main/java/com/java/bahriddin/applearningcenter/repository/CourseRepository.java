@@ -1,10 +1,10 @@
 package com.java.bahriddin.applearningcenter.repository;
 
 import com.java.bahriddin.applearningcenter.entity.Course;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.java.bahriddin.applearningcenter.generic.GenericRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CourseRepository extends JpaRepository<Course,Integer> {
+public interface CourseRepository extends GenericRepository<Course,Integer> {
 }
 

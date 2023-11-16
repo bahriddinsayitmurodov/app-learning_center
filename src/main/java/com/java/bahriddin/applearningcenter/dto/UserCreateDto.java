@@ -1,25 +1,16 @@
 package com.java.bahriddin.applearningcenter.dto;
 
+import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
+
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class AuthUserDto {
-
-    private String name;
-
-    private String username;
-
-    private String email;
-
-    private String phone;
-
+@MappedSuperclass
+public class UserCreateDto extends UserBaseDto{
+    @NotBlank
     private String password;
-
-
 }
