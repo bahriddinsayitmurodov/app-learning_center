@@ -1,4 +1,4 @@
-package com.java.bahriddin.applearningcenter.config;
+package com.java.bahriddin.applearningcenter.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

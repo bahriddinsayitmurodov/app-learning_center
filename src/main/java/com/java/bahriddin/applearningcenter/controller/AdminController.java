@@ -31,11 +31,22 @@ public class AdminController {
 
         return "/admin/student-add";
     }
+    @GetMapping("/get/students")
+    public String getAll(Model model) {
+
+        List<Course> stackList = stackService.getAll();
+        model.addAttribute("stackList",stackList);
+
+        List<Role> roles = Arrays.stream(Role.values()).toList();
+        model.addAttribute("roles", roles);
+
+        return "/admin/student-add";
+    }
+
 
 
     @GetMapping("/create/mentor")
     public String createMentorPage(Model model) {
-
         return "/admin/mentor-add";
     }
 

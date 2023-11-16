@@ -1,4 +1,4 @@
-package com.java.bahriddin.applearningcenter.config;
+package com.java.bahriddin.applearningcenter.config.security;
 
 import com.java.bahriddin.applearningcenter.entity.User;
 import com.java.bahriddin.applearningcenter.repository.UserRepository;

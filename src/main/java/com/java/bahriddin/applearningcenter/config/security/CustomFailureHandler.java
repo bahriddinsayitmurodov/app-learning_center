@@ -1,4 +1,4 @@
-package com.java.bahriddin.applearningcenter.config;
+package com.java.bahriddin.applearningcenter.config.security;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

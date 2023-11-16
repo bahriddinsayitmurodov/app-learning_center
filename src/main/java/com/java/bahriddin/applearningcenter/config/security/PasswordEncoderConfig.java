@@ -1,8 +1,6 @@
-package com.java.bahriddin.applearningcenter.config;
+package com.java.bahriddin.applearningcenter.config.security;
 
-import org.slf4j.helpers.NormalizedParameters;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
